@@ -8,4 +8,6 @@ public class GMDatabaseSettings
 
     public string UsersCollectionName { get; set; } = null!;
     public string PdfsCollectionName { get; set; } = null!;
+
+    public string RequestsCollectionName {get;set;} = null!;
 }

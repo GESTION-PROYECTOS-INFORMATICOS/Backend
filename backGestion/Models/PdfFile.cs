@@ -17,5 +17,6 @@ namespace backGestion.Models
 
         [BsonElement("FileData")]
         public byte[] FileData { get; set; }
+
     }
 }

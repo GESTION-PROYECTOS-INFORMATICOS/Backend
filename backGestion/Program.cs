@@ -10,10 +10,11 @@ builder.Services.AddControllers();
 builder.Services.Configure<GMDatabaseSettings>(
     builder.Configuration.GetSection("GMDatabase"));
 
+//para colecciones
 builder.Services.AddSingleton<UsersService>();
-
 builder.Services.AddScoped<IPdfService, PdfService>();
-
+builder.Services.AddScoped<IRequestService, RequestService>();
+//
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>

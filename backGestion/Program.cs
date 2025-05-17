@@ -14,6 +14,8 @@ builder.Services.Configure<GMDatabaseSettings>(
 builder.Services.AddSingleton<UsersService>();
 builder.Services.AddScoped<IPdfService, PdfService>();
 builder.Services.AddScoped<IRequestService, RequestService>();
+builder.Services.AddScoped<IMallaService, MallaService>();
+builder.Services.AddScoped<IAsignaturaService, AsignaturaService>();
 //
 builder.Services.AddCors(options =>
 {

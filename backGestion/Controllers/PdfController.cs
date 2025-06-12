@@ -29,6 +29,12 @@ namespace backGestion.Controllers
                 return BadRequest(ex.Message);
             }
         }
+          [HttpGet("get-all")]
+        public async Task<IActionResult> GetAll()
+        {
+            var pdfs = await _pdfService.GetAllPdfsAsync();
+            return Ok(pdfs);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
@@ -39,5 +45,6 @@ namespace backGestion.Controllers
 
             return File(pdf.FileData, pdf.ContentType, pdf.FileName);
         }
+
     }
 }

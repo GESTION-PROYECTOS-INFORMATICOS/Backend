@@ -8,5 +8,6 @@ namespace backGestion.Interfaces
     {
         Task<string> UploadPdfAsync(IFormFile file);
         Task<PdfFile> GetPdfAsync(string id);
+        Task<List<PdfFile>> GetAllPdfsAsync();
     }
 }

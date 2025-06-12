@@ -10,7 +10,7 @@ namespace backGestion.Services
     {
         private readonly IMongoCollection<PdfFile> _pdfCollection;
 
-        public PdfService( IOptions<GMDatabaseSettings> gMDatabaseSettings)
+        public PdfService(IOptions<GMDatabaseSettings> gMDatabaseSettings)
         {
             var mongoClient = new MongoClient(
                 gMDatabaseSettings.Value.ConnectionString);
@@ -20,7 +20,7 @@ namespace backGestion.Services
 
             _pdfCollection = mongoDatabase.GetCollection<PdfFile>(
                 gMDatabaseSettings.Value.PdfsCollectionName);
-    }
+        }
 
         public async Task<string> UploadPdfAsync(IFormFile file)
         {
@@ -46,5 +46,10 @@ namespace backGestion.Services
         {
             return await _pdfCollection.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
+        
+        public async Task<List<PdfFile>> GetAllPdfsAsync()
+{
+    return await _pdfCollection.Find(_ => true).ToListAsync();
+}
     }
 }

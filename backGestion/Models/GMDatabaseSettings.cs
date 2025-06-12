@@ -12,4 +12,6 @@ public class GMDatabaseSettings
     public string RequestsCollectionName { get; set; } = null!;
     public string MallasCollectionName { get; set; } = null!;
     public string AsignaturasCollectionName { get; set; } = null!;
+
+    
 }

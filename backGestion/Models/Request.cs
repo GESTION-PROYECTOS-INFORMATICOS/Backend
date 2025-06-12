@@ -22,6 +22,9 @@ public class Request
     [BsonElement("RequestDate")]
     public DateTime RequestDate { get; set; } = DateTime.UtcNow;
 
+     [BsonElement("FileData")]
+        public byte[] FileData { get; set; }
+
     [BsonElement("ApprovalDate")]
     public DateTime? ApprovalDate { get; set; }
 }

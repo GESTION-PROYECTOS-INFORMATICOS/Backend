@@ -18,7 +18,8 @@ public class RequestController : ControllerBase
     }
 
     [HttpPost("with-document")]
-public async Task<IActionResult> PostRequestWithDocument([FromForm] IFormFile file, [FromForm] string requestReason, [FromForm] string requestedBy)
+public async Task<IActionResult> PostRequestWithDocument([FromForm] IFormFile file, [FromForm] string requestReason, [FromForm] string requestedBy,
+    [FromForm] string malla, [FromForm] string asignatura)
 {
     if (file == null || file.Length == 0)
         return BadRequest("Debe subir un documento PDF.");
@@ -26,7 +27,7 @@ public async Task<IActionResult> PostRequestWithDocument([FromForm] IFormFile fi
     try
     {
         // 1. Subir el documento primero (usando tu PdfService).
-        var pdfId = await _pdfService.UploadPdfAsync(file);
+        var pdfId = await _pdfService.UploadPdfAsync(file, malla, asignatura);
 
         // 2. Crear la solicitud con el ID del documento.
         var request = new Request

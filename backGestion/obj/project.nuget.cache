@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "R6m7VXN7F5M=",
+=======
+  "dgSpecHash": "HnopreGFNOs=",
+>>>>>>> 25e9782599766c7f9be1b1c0add5dbcad4aa0bd6
   "success": true,
   "projectFilePath": "C:\\Users\\Fernanda\\OneDrive\\Desktop\\GPI\\Backend\\backGestion\\backGestion.csproj",
   "expectedPackageFiles": [

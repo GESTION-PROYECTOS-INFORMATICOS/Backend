@@ -663,19 +663,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\basti\\.nuget\\packages\\": {}
+    "C:\\Users\\Fernanda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\basti\\Desktop\\gpi_web\\Backend\\backGestion\\backGestion.csproj",
+      "projectUniqueName": "C:\\Users\\Fernanda\\OneDrive\\Desktop\\GPI\\Backend\\backGestion\\backGestion.csproj",
       "projectName": "backGestion",
-      "projectPath": "C:\\Users\\basti\\Desktop\\gpi_web\\Backend\\backGestion\\backGestion.csproj",
-      "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\basti\\Desktop\\gpi_web\\Backend\\backGestion\\obj\\",
+      "projectPath": "C:\\Users\\Fernanda\\OneDrive\\Desktop\\GPI\\Backend\\backGestion\\backGestion.csproj",
+      "packagesPath": "C:\\Users\\Fernanda\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fernanda\\OneDrive\\Desktop\\GPI\\Backend\\backGestion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Fernanda\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -699,7 +699,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -733,7 +733,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

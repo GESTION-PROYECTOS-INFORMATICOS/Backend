@@ -22,5 +22,5 @@ public class Asignatura
     [BsonElement("codigo")]
     public string Codigo { get; set; }
 
-
+    //
 }

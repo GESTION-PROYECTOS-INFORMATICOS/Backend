@@ -1,5 +1,6 @@
-backGestion/bin/
-backGestion/obj/
+# Ignorar carpetas bin y obj
+**/bin/
+**/obj/
 *.dll
 *.exe
 *.pdb

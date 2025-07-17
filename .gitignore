@@ -1,6 +1,4 @@
-# Archivos de compilación y binarios de .NET
-bin/
-obj/
+
 *.dll
 *.exe
 *.pdb

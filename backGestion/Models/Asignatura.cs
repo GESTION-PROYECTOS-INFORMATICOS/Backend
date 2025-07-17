@@ -2,10 +2,11 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace backGestion.Models;
+
 public class Asignatura
 {
     [BsonId]
-    [BsonRepresentation(BsonType.String)]
+    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
 
     [BsonElement("nombre")]
@@ -17,5 +18,9 @@ public class Asignatura
 
     [BsonElement("semestre")]
     public int Semestre { get; set; }
+    
+    [BsonElement("codigo")]
+    public string Codigo { get; set; }
+
 
 }

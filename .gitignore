@@ -1,0 +1,9 @@
+# Ignorar carpetas bin y obj
+**/bin/
+**/obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.json
+*.csproj.user

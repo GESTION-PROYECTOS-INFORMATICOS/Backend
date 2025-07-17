@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("backGestion")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c698be64b560f6b2ac173ecbe47e7edb645e945f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8c67e4e3fe9e00c2addf217f5c10457c2d0d0c4")]
 [assembly: System.Reflection.AssemblyProductAttribute("backGestion")]
 [assembly: System.Reflection.AssemblyTitleAttribute("backGestion")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

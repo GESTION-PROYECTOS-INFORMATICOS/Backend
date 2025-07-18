@@ -1,27 +1,40 @@
-# Build results
-bin/
-obj/
-*.user
-*.suo
-*.cache
-*.dll
+# Archivos de compilación
+**/bin/
+**/obj/
 *.exe
+*.dll
 *.pdb
-*.mdb
-*.log
+*.cache
 *.tmp
 *.bak
+*.log
+*.mdb
+
+# Archivos de configuración locales
+*.user
+*.suo
 *.vspscc
 *.vssscc
 
-# Rider y VS Code
+# IDEs
 .vscode/
 .idea/
 
-# Dotnet artifacts
+# Artifacts y lock files de dotnet
+artifacts/
 project.lock.json
 project.fragment.lock.json
-artifacts/
+project.assets.json
+project.nuget.cache
+*.nuget.dgspec.json
+
+# Archivos generados por el compilador
+*.AssemblyInfo.cs
+*.CoreCompileInputs.cache
+*.sourceinfo.json
+*.sourcelink.json
+*.ref/
+*.refint/
 
 # Otros
 *.dbmdl

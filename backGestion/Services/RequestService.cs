@@ -2,34 +2,24 @@ using backGestion.Interfaces;
 using backGestion.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 public class RequestService : IRequestService
 {
     private readonly IMongoCollection<Request> _requestCollection;
 
     public RequestService(IOptions<GMDatabaseSettings> gMDatabaseSettings)
     {
-        var mongoClient = new MongoClient(
-            gMDatabaseSettings.Value.ConnectionString);
-    public RequestService(IOptions<GMDatabaseSettings> gMDatabaseSettings)
-    {
-        var mongoClient = new MongoClient(
-            gMDatabaseSettings.Value.ConnectionString);
+        var mongoClient = new MongoClient(gMDatabaseSettings.Value.ConnectionString);
 
-        var mongoDatabase = mongoClient.GetDatabase(
-            gMDatabaseSettings.Value.DatabaseName);
-        var mongoDatabase = mongoClient.GetDatabase(
-            gMDatabaseSettings.Value.DatabaseName);
+        var mongoDatabase = mongoClient.GetDatabase(gMDatabaseSettings.Value.DatabaseName);
 
-        _requestCollection = mongoDatabase.GetCollection<Request>(
-            gMDatabaseSettings.Value.RequestsCollectionName);
-        _requestCollection = mongoDatabase.GetCollection<Request>(
-            gMDatabaseSettings.Value.RequestsCollectionName);
+        _requestCollection = mongoDatabase.GetCollection<Request>(gMDatabaseSettings.Value.RequestsCollectionName);
     }
 
     public async Task<string> CreateRequestAsync(Request r)
-    {
-        if (r == null)
-            return "Solicitud inválida.";
     {
         if (r == null)
             return "Solicitud inválida.";
@@ -50,21 +40,18 @@ public class RequestService : IRequestService
     {
         return await _requestCollection.Find(_ => true).ToListAsync();
     }
-    
+
     public async Task<bool> UpdateStatusAsync(string id, string status)
-{
-    var update = Builders<Request>.Update
-        .Set(r => r.Status, status)
-        .Set(r => r.ApprovalDate, DateTime.UtcNow);
+    {
+        var update = Builders<Request>.Update
+            .Set(r => r.Status, status)
+            .Set(r => r.ApprovalDate, DateTime.UtcNow);
 
-    var result = await _requestCollection.UpdateOneAsync(
-        r => r.Id == id,
-        update
-    );
+        var result = await _requestCollection.UpdateOneAsync(
+            r => r.Id == id,
+            update
+        );
 
-    return result.ModifiedCount > 0;
-}
-
-
-
+        return result.ModifiedCount > 0;
+    }
 }

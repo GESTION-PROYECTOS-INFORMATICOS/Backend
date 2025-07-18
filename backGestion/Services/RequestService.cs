@@ -10,15 +10,26 @@ public class RequestService : IRequestService
     {
         var mongoClient = new MongoClient(
             gMDatabaseSettings.Value.ConnectionString);
+    public RequestService(IOptions<GMDatabaseSettings> gMDatabaseSettings)
+    {
+        var mongoClient = new MongoClient(
+            gMDatabaseSettings.Value.ConnectionString);
 
+        var mongoDatabase = mongoClient.GetDatabase(
+            gMDatabaseSettings.Value.DatabaseName);
         var mongoDatabase = mongoClient.GetDatabase(
             gMDatabaseSettings.Value.DatabaseName);
 
         _requestCollection = mongoDatabase.GetCollection<Request>(
             gMDatabaseSettings.Value.RequestsCollectionName);
+        _requestCollection = mongoDatabase.GetCollection<Request>(
+            gMDatabaseSettings.Value.RequestsCollectionName);
     }
 
     public async Task<string> CreateRequestAsync(Request r)
+    {
+        if (r == null)
+            return "Solicitud inválida.";
     {
         if (r == null)
             return "Solicitud inválida.";

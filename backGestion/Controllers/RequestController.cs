@@ -43,6 +43,10 @@ public async Task<IActionResult> PostRequestWithDocument(
             Semestre = semestre,
             AsignaturaCodigo = asignaturaCodigo,
             AsignaturaNombre = asignaturaNombre,
+            Malla = malla,
+            Semestre = semestre,
+            AsignaturaCodigo = asignaturaCodigo,
+            AsignaturaNombre = asignaturaNombre,
             Status = "Pending",
             RequestDate = DateTime.UtcNow
         };

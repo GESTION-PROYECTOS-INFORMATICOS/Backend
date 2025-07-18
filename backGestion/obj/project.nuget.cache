@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "R6m7VXN7F5M=",
+=======
+  "dgSpecHash": "HnopreGFNOs=",
+>>>>>>> Stashed changes
   "success": true,
   "projectFilePath": "C:\\Users\\Fernanda\\OneDrive\\Desktop\\GPI\\Backend\\backGestion\\backGestion.csproj",
   "expectedPackageFiles": [

@@ -36,7 +36,7 @@ public class RequestController : ControllerBase
 
         try
         {
-            var pdfId = await _pdfService.UploadPdfAsync(file);
+            var pdfId = await _pdfService.UploadPdfAsync(file, malla, requestedBy);
 
             var request = new Request
             {

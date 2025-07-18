@@ -10,7 +10,7 @@ namespace backGestion.Services
     {
         private readonly IMongoCollection<PdfFile> _pdfCollection;
 
-        public PdfService( IOptions<GMDatabaseSettings> gMDatabaseSettings)
+        public PdfService(IOptions<GMDatabaseSettings> gMDatabaseSettings)
         {
             var mongoClient = new MongoClient(
                 gMDatabaseSettings.Value.ConnectionString);
@@ -20,9 +20,9 @@ namespace backGestion.Services
 
             _pdfCollection = mongoDatabase.GetCollection<PdfFile>(
                 gMDatabaseSettings.Value.PdfsCollectionName);
-    }
+        }
 
-        public async Task<string> UploadPdfAsync(IFormFile file)
+        public async Task<string> UploadPdfAsync(IFormFile file, string malla, string asignatura)
         {
             if (file == null || file.Length == 0 || !file.ContentType.Contains("pdf"))
                 throw new ArgumentException("Archivo inválido.");
@@ -35,16 +35,25 @@ namespace backGestion.Services
             {
                 FileName = file.FileName,
                 ContentType = file.ContentType,
-                FileData = fileBytes
+                FileData = fileBytes,
+                Malla = malla,
+                Asignatura = asignatura,
+                FechaSubida = DateTime.UtcNow
             };
 
             await _pdfCollection.InsertOneAsync(pdf);
             return pdf.Id;
         }
 
+
         public async Task<PdfFile> GetPdfAsync(string id)
         {
             return await _pdfCollection.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
+        
+        public async Task<List<PdfFile>> GetAllPdfsAsync()
+{
+    return await _pdfCollection.Find(_ => true).ToListAsync();
+}
     }
 }

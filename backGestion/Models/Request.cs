@@ -17,24 +17,11 @@ public class Request
 
     [BsonElement("Status")]
     public string Status { get; set; } = "Pending"; //Pending, Approved, Rejected -> indican
-                                                    //estados de aprobación
+                                                        //estados de aprobación
 
     [BsonElement("RequestDate")]
     public DateTime RequestDate { get; set; } = DateTime.UtcNow;
 
     [BsonElement("ApprovalDate")]
     public DateTime? ApprovalDate { get; set; }
-    
-    [BsonElement("Malla")]
-    public string Malla { get; set; }
-
-    [BsonElement("Semestre")]
-    public int Semestre { get; set; }
-
-    [BsonElement("AsignaturaCodigo")]
-    public string AsignaturaCodigo { get; set; }
-
-    [BsonElement("AsignaturaNombre")]
-    public string AsignaturaNombre { get; set; }
-
 }

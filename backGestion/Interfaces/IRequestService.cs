@@ -1,8 +1,11 @@
 using backGestion.Models;
 namespace backGestion.Interfaces;
+
 public interface IRequestService
 {
     Task<string> CreateRequestAsync(Request r); //enviar solicitud
+    Task<List<Request>> GetAllRequestsAsync();
+    Task<bool> UpdateStatusAsync(string id, string status);
     // Task<string> ApproveRequestAsync(); //Aprobar la solicitud
     // Task<string> RejectRequestAsync(); //Rechazar la solicitud
     // // Task<string> UpdateStatusAsync(); //Cambiar a cualquier estado arbitrario si es necesario

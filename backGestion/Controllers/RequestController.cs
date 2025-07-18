@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using backGestion.Services;
 using backGestion.Interfaces;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Threading.Tasks;
+
 namespace backGestion.Controllers;
 
 [ApiController]
@@ -11,42 +15,70 @@ public class RequestController : ControllerBase
     private readonly IRequestService _requestService;
     private readonly IPdfService _pdfService;
 
-    public RequestController(IRequestService requestService,IPdfService pdfService)
+    public RequestController(IRequestService requestService, IPdfService pdfService)
     {
         _requestService = requestService;
         _pdfService = pdfService;
     }
 
     [HttpPost("with-document")]
-public async Task<IActionResult> PostRequestWithDocument([FromForm] IFormFile file, [FromForm] string requestReason, [FromForm] string requestedBy)
-{
-    if (file == null || file.Length == 0)
-        return BadRequest("Debe subir un documento PDF.");
-
-    try
+    public async Task<IActionResult> PostRequestWithDocument(
+        [FromForm] IFormFile file,
+        [FromForm] string requestReason,
+        [FromForm] string requestedBy,
+        [FromForm] string malla,
+        [FromForm] int semestre,
+        [FromForm] string asignaturaCodigo,
+        [FromForm] string asignaturaNombre)
     {
-        // 1. Subir el documento primero (usando tu PdfService).
-        var pdfId = await _pdfService.UploadPdfAsync(file);
+        if (file == null || file.Length == 0)
+            return BadRequest("Debe subir un documento PDF.");
 
-        // 2. Crear la solicitud con el ID del documento.
-        var request = new Request
+        try
         {
-            DocumentId = pdfId,
-            RequestReason = requestReason,
-            RequestedBy = requestedBy,
-            Status = "Pending",
-            RequestDate = DateTime.UtcNow
-        };
+            var pdfId = await _pdfService.UploadPdfAsync(file);
 
-        await _requestService.CreateRequestAsync(request);
+            var request = new Request
+            {
+                DocumentId = pdfId,
+                RequestReason = requestReason,
+                RequestedBy = requestedBy,
+                Malla = malla,
+                Semestre = semestre,
+                AsignaturaCodigo = asignaturaCodigo,
+                AsignaturaNombre = asignaturaNombre,
+                Status = "Pending",
+                RequestDate = DateTime.UtcNow
+            };
 
-        return Ok(new { message = "Solicitud creada correctamente.", documentId = pdfId });
+            await _requestService.CreateRequestAsync(request);
+            return Ok(new { message = "Solicitud creada correctamente.", documentId = pdfId });
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Error: {e.Message}");
+            return StatusCode(500, "Error al procesar la solicitud.");
+        }
     }
-    catch (Exception e)
+
+    [HttpGet("all")]
+    public async Task<IActionResult> GetAllRequests()
     {
-        Console.WriteLine($"Error: {e.Message}");
-        return StatusCode(500, "Error al procesar la solicitud.");
+        var requests = await _requestService.GetAllRequestsAsync();
+        return Ok(requests);
     }
-}
 
+    [HttpPut("{id}/approve")]
+    public async Task<IActionResult> ApproveRequest(string id)
+    {
+        var result = await _requestService.UpdateStatusAsync(id, "Approved");
+        return result ? Ok("Solicitud aprobada.") : NotFound("Solicitud no encontrada.");
+    }
+
+    [HttpPut("{id}/reject")]
+    public async Task<IActionResult> RejectRequest(string id)
+    {
+        var result = await _requestService.UpdateStatusAsync(id, "Rejected");
+        return result ? Ok("Solicitud rechazada.") : NotFound("Solicitud no encontrada.");
+    }
 }

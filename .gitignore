@@ -1,8 +1,28 @@
-# Archivos de compilación y binarios de .NET
+# Build results
 bin/
 obj/
+*.user
+*.suo
+*.cache
 *.dll
 *.exe
 *.pdb
-*.cache
-*.json
+*.mdb
+*.log
+*.tmp
+*.bak
+*.vspscc
+*.vssscc
+
+# Rider y VS Code
+.vscode/
+.idea/
+
+# Dotnet artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Otros
+*.dbmdl
+*.sln.docstates
